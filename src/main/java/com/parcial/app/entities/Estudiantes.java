@@ -41,13 +41,15 @@ public class Estudiantes {
     // Constructor por defecto
     public Estudiantes() {
     }
-
     // Constructor parametrizado (sin niveles)
     public Estudiantes(String tipoDocumento, String numeroDocumento, String primerApellido, String segundoApellido, 
                        String primerNombre, String segundoNombre, String correoElectronico, String numeroTelefonico, 
                        String numeroRegistro, int puntaje, int mediaNacional, int comunicacionEscrita, 
                        int razonamientoCuantitativo, int lecturaCritica, int competenciasCiudadanas, int ingles, 
                        int formulacionProyectosIngenieria, int pensamientoCientifico, int disenoSoftware, String contrasena) {
+        
+        
+        this.tipoDocumento = tipoDocumento;
         this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
         this.primerApellido = primerApellido;
@@ -110,12 +112,19 @@ public class Estudiantes {
     
 
     // Getters y Setters (incluyen los niveles)
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getContrasena() {
-        return tipoDocumento;
+        return contrasena;
     }
 
     public void setContrasena(String contrasena) {
-        this.tipoDocumento = contrasena;
+        this.contrasena = contrasena;
     }
 
     public String getTipoDocumento() {

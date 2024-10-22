@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>Estudiantes Registrados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            background-color: rgb(128, 255, 255);
+        }
+        .container {
+            background-color: #343a40;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+        h2.section__title {
+            color: #ffc107;
+            text-align: center;
+        }
+        table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .btn-outline-primary, .btn-outline-success {
+            margin: 0.5rem;
+        }
+        .btn-info, .btn-danger {
+            margin-right: 0.5rem;
+        }
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center-content">
+        <div class="container p-4">
+            <h2 class="section__title text-white bold">Lista de Estudiantes</h2><br><br>
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Tipo de Documento</th>
+                        <th>Número de Documento</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Primer Nombre</th>
+                        <th>Segundo Nombre</th>
+                        <th>Correo Electrónico</th>
+                        <th>Número Telefónico</th>
+                        <th>Número de Registro</th>
+                        <th>Puntaje</th>
+                        <th>Media Nacional</th>
+                        <th>Aprobado UTS</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="estudiante: ${listaEstudiantes}">
+                        <td th:text="${estudiante.tipoDocumento}"></td>
+                        <td th:text="${estudiante.numeroDocumento}"></td>
+                        <td th:text="${estudiante.primerApellido}"></td>
+                        <td th:text="${estudiante.segundoApellido}"></td>
+                        <td th:text="${estudiante.primerNombre}"></td>
+                        <td th:text="${estudiante.segundoNombre}"></td>
+                        <td th:text="${estudiante.correoElectronico}"></td>
+                        <td th:text="${estudiante.numeroTelefonico}"></td>
+                        <td th:text="${estudiante.numeroRegistro}"></td>
+                        <td th:text="${estudiante.puntaje}"></td>
+                        <td th:text="${estudiante.mediaNacional}"></td>
+                        <td th:text="${estudiante.aprobadoUTS} ? 'Sí' : 'No'"></td>
+                        <td>
+                            <a class="btn btn-info btn-xs" th:href="@{'/estudiantes/edit'+ '/' + ${estudiante.id}}" th:text="'Editar'"></a>
+                            <a class="btn btn-info btn-xs" th:href="@{'/estudiantes'+ '/' + ${estudiante.id}}" th:text="'Editar'"></a>
+                            <a class="btn btn-danger btn-xs" th:href="@{'/estudiantes/delete'+ '/' + ${estudiante.id}}" th:text="'Eliminar'"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+                <a th:href="@{/estudiantes/new}" class="btn btn-outline-primary">Insertar Estudiante</a>
+                <a th:href="@{/}" class="btn btn-outline-success">Inicio</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>

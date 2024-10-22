@@ -80,7 +80,7 @@ public class CoordinadoresWebController {
             coordinadorBD.get().getContrasena().equals(coordinador.getContrasena())) {
       
             session.setAttribute("coordinadorId", coordinadorBD.get().getCedula());
-            return "redirect:/coordinadores";
+            return "redirect:/estudiantes";
         }
         
         

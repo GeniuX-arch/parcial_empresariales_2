@@ -1,5 +1,6 @@
 package com.parcial.app.controller;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.parcial.app.entities.Estudiantes;
 import com.parcial.app.repository.EstudiantesRepository;
 import com.parcial.app.tools.*;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -28,6 +32,13 @@ public class EstudiantesWebController {
         model.addAttribute("listaEstudiantes", estudiantesRepositorio.findAll());
         return "list-estudiantes";
     }
+    @GetMapping("/{id}")
+    public String estudianteDetailTemplate(@PathVariable("id") String id, Model model) {
+    Estudiantes estudiante = estudiantesRepositorio.findById(id)
+        .orElseThrow(() -> new NotFoundException("Estudiante no encontrado"));
+    model.addAttribute("estudiante", estudiante);
+    return "detail-estudiante"; // Asegúrate de tener una plantilla para mostrar los detalles del estudiante
+}
 
     @GetMapping("/new")
     public String estudiantesNewTemplate(Model model) {
@@ -56,6 +67,37 @@ public class EstudiantesWebController {
         estudiantesRepositorio.deleteById(id);
         return "redirect:/estudiantes";
         
+    }
+
+    @GetMapping("/login")
+    public String loginPage(Model model) {
+    model.addAttribute("estudiante", new Estudiantes());
+    return "login-estudiantes"; // Asegúrate de tener la plantilla correspondiente
+    }
+@PostMapping("/login")
+public String processLogin(@ModelAttribute("estudiante") Estudiantes estudiante, 
+                           HttpSession session, 
+                           RedirectAttributes redirectAttributes) {
+    
+    Optional<Estudiantes> estudianteBD = estudiantesRepositorio
+        .findByNumeroDocumento(estudiante.getNumeroDocumento());
+    
+    if (estudianteBD.isPresent() && 
+        estudianteBD.get().getContrasena().equals(estudiante.getContrasena())) {
+        
+        session.setAttribute("estudianteId", estudianteBD.get().getNumeroDocumento());
+        
+        // Redirigir a la ruta con el ID del estudiante
+        return "redirect:/estudiantes/" + estudianteBD.get().getId(); // Usa el ID de MongoDB
+    }
+    
+    redirectAttributes.addFlashAttribute("error", "Credenciales inválidas");
+    return "redirect:/estudiantes/login";
+}
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/estudiantes/login";
     }
     
     
