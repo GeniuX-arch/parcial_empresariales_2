@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Estudiante</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: rgb(128, 128, 255);
+            font-family: 'Libre Baskerville', serif;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+    <main class="bg-gray-800 text-blue-100 p-8 rounded-lg shadow-lg w-full max-w-md">
+
+        <h1 class="text-center text-3xl font-bold mb-6">Ingresar Estudiante</h1>
+        <h2 class="text-center text-xl mb-6">Ingrese los datos del Estudiante.</h2>
+
+        <form th:action="@{/estudiantes/save}" th:object="${estudiante}" method="post" class="space-y-6">
+
+            <input type="hidden" th:field="*{id}" th:value="${estudiante.id}" />
+
+            <div class="mb-4 relative">
+                <input type="text" th:field="*{tipoDocumento}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Tipo de Documento" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="tipoDocumento">Tipo de Documento</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="text" th:field="*{numeroDocumento}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Número de Documento" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="numeroDocumento">Número de Documento</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="text" th:field="*{primerApellido}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Primer Apellido" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="primerApellido">Primer Apellido</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="text" th:field="*{segundoApellido}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Segundo Apellido" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="segundoApellido">Segundo Apellido</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="text" th:field="*{primerNombre}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Primer Nombre" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="primerNombre">Primer Nombre</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="text" th:field="*{segundoNombre}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Segundo Nombre" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="segundoNombre">Segundo Nombre</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="email" th:field="*{correoElectronico}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Correo Electrónico" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="correoElectronico">Correo Electrónico</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="text" th:field="*{numeroTelefonico}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Número Telefónico" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="numeroTelefonico">Número Telefónico</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="text" th:field="*{numeroRegistro}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Número de Registro" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="numeroRegistro">Número de Registro</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{puntaje}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Puntaje" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="puntaje">Puntaje</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{mediaNacional}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Media Nacional" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="mediaNacional">Media Nacional</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{comunicacionEscrita}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Comunicación Escrita" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="comunicacionEscrita">Comunicación Escrita</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{razonamientoCuantitativo}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Razonamiento Cuantitativo" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="razonamientoCuantitativo">Razonamiento Cuantitativo</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{lecturaCritica}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Lectura Crítica" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="lecturaCritica">Lectura Crítica</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{competenciasCiudadanas}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Competencias Ciudadanas" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="competenciasCiudadanas">Competencias Ciudadanas</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{ingles}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Inglés" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="ingles">Inglés</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{formulacionProyectosIngenieria}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Formulación de Proyectos de Ingeniería" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="formulacionProyectosIngenieria">Formulación de Proyectos de Ingeniería</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{pensamientoCientifico}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Pensamiento Científico" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="pensamientoCientifico">Pensamiento Científico</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="number" th:field="*{disenoSoftware}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Diseño de Software" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="disenoSoftware">Diseño de Software</label>
+            </div>
+
+            <div class="mb-4 relative">
+                <input type="password" th:field="*{contrasena}" class="peer w-full border-b border-green-300 bg-transparent pt-4 pb-1.5 text-sm text-white placeholder-transparent focus:border-green-500 focus:outline-none" placeholder="Contraseña" required>
+                <label class="absolute left-0 -top-2 text-green-500 text-xs transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2 peer-focus:text-xs" for="contrasena">Contraseña</label>
+            </div>
+
+            <div class="flex justify-between">
+                <input type="submit" class="w-full mr-4 py-2 px-4 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 cursor-pointer" value="Enviar">
+                <input type="reset" class="w-full py-2 px-4 bg-gray-600 text-white rounded-lg shadow hover:bg-gray-700 cursor-pointer" value="Restablecer">
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>

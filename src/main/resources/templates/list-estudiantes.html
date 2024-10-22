@@ -1,97 +1,65 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html">
     <title>Estudiantes Registrados</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
         body {
             background-color: rgb(128, 255, 255);
         }
-        .container {
-            background-color: #343a40;
-            border-radius: 10px;
-            padding: 2rem;
-        }
-        h2.section__title {
-            color: #ffc107;
-            text-align: center;
-        }
-        table {
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .btn-outline-primary, .btn-outline-success {
-            margin: 0.5rem;
-        }
-        .btn-info, .btn-danger {
-            margin-right: 0.5rem;
-        }
-        .center-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
     </style>
 </head>
 
 <body>
-    <div class="center-content">
-        <div class="container p-4">
-            <h2 class="section__title text-white bold">Lista de Estudiantes</h2><br><br>
-            <table class="table table-dark table-hover">
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-gray-800 rounded-lg p-8 shadow-lg w-full mx-2">
+            <h2 class="text-yellow-400 text-2xl text-center font-bold mb-6">Lista de Estudiantes</h2>
+            <table class="min-w-full bg-gray-700 rounded-lg overflow-hidden">
                 <thead>
-                    <tr>
-                        <th>Tipo de Documento</th>
-                        <th>Número de Documento</th>
-                        <th>Primer Apellido</th>
-                        <th>Segundo Apellido</th>
-                        <th>Primer Nombre</th>
-                        <th>Segundo Nombre</th>
-                        <th>Correo Electrónico</th>
-                        <th>Número Telefónico</th>
-                        <th>Número de Registro</th>
-                        <th>Puntaje</th>
-                        <th>Media Nacional</th>
-                        <th>Aprobado UTS</th>
-                        <th>Acciones</th>
+                    <tr class="bg-gray-600">
+                        <th class="py-3 px-4 text-left text-white">Tipo de Documento</th>
+                        <th class="py-3 px-4 text-left text-white">Número de Documento</th>
+                        <th class="py-3 px-4 text-left text-white">Primer Apellido</th>
+                        <th class="py-3 px-4 text-left text-white">Primer Nombre</th>
+                        <th class="py-3 px-4 text-left text-white">Correo Electrónico</th>
+                        <th class="py-3 px-4 text-left text-white">Número Telefónico</th>
+                        <th class="py-3 px-4 text-left text-white">Número de Registro</th>
+                        <th class="py-3 px-4 text-left text-white">Puntaje</th>
+                        <th class="py-3 px-4 text-left text-white">Media Nacional</th>
+                        <th class="py-3 px-4 text-left text-white">Aprobado UTS</th>
+                        <th class="py-3 px-4 text-left text-white">Acciones</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    <tr th:each="estudiante: ${listaEstudiantes}">
-                        <td th:text="${estudiante.tipoDocumento}"></td>
-                        <td th:text="${estudiante.numeroDocumento}"></td>
-                        <td th:text="${estudiante.primerApellido}"></td>
-                        <td th:text="${estudiante.segundoApellido}"></td>
-                        <td th:text="${estudiante.primerNombre}"></td>
-                        <td th:text="${estudiante.segundoNombre}"></td>
-                        <td th:text="${estudiante.correoElectronico}"></td>
-                        <td th:text="${estudiante.numeroTelefonico}"></td>
-                        <td th:text="${estudiante.numeroRegistro}"></td>
-                        <td th:text="${estudiante.puntaje}"></td>
-                        <td th:text="${estudiante.mediaNacional}"></td>
-                        <td th:text="${estudiante.aprobadoUTS} ? 'Sí' : 'No'"></td>
-                        <td>
-                            <a class="btn btn-info btn-xs" th:href="@{'/estudiantes/edit'+ '/' + ${estudiante.id}}" th:text="'Editar'"></a>
-                            <a class="btn btn-info btn-xs" th:href="@{'/estudiantes'+ '/' + ${estudiante.id}}" th:text="'Editar'"></a>
-                            <a class="btn btn-danger btn-xs" th:href="@{'/estudiantes/delete'+ '/' + ${estudiante.id}}" th:text="'Eliminar'"></a>
+                    <tr th:each="estudiante: ${listaEstudiantes}" class="hover:bg-gray-600">
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.tipoDocumento}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.numeroDocumento}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.primerApellido}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.primerNombre}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.correoElectronico}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.numeroTelefonico}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.numeroRegistro}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.puntaje}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.mediaNacional}"></td>
+                        <td class="py-2 px-4 text-white" th:text="${estudiante.aprobadoUTS} ? 'Sí' : 'No'"></td>
+                        <td class="py-2 px-4">
+                            <a class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded" th:href="@{'/estudiantes/edit' + '/' + ${estudiante.id}}" th:text="'Editar'"></a>
+                            <a class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-2 rounded" th:href="@{'/estudiantes' + '/' + ${estudiante.id}}" th:text="'Ver detalles'"></a>
+                            <a class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 rounded" th:href="@{'/estudiantes/delete' + '/' + ${estudiante.id}}" th:text="'Eliminar'"></a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center">
-                <a th:href="@{/estudiantes/new}" class="btn btn-outline-primary">Insertar Estudiante</a>
-                <a th:href="@{/}" class="btn btn-outline-success">Inicio</a>
+            <div class="flex justify-center mt-6">
+                <a th:href="@{/coordinadores}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mr-2">Lista Coordinadores</a>
+                <a th:href="@{/estudiantes/new}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mr-2">Insertar Estudiante</a>
+                <a th:href="@{/}" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Inicio</a>
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
 </html>

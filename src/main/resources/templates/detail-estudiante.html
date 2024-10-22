@@ -1,12 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>Detalles del Estudiante</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(128, 255, 255);
+        }
+    </style>
 </head>
 <body>
-    detail
-    
+
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-gray-800 text-white rounded-lg shadow-lg p-6 w-full max-w-2xl">
+            <h2 class="text-yellow-400 text-2xl font-bold text-center mb-4">Detalles del Estudiante</h2>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="font-semibold">Tipo de Documento:</label>
+                    <span th:text="${estudiante.tipoDocumento}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Número de Documento:</label>
+                    <span th:text="${estudiante.numeroDocumento}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Primer Apellido:</label>
+                    <span th:text="${estudiante.primerApellido}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Segundo Apellido:</label>
+                    <span th:text="${estudiante.segundoApellido}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Primer Nombre:</label>
+                    <span th:text="${estudiante.primerNombre}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Segundo Nombre:</label>
+                    <span th:text="${estudiante.segundoNombre}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Correo Electrónico:</label>
+                    <span th:text="${estudiante.correoElectronico}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Número Telefónico:</label>
+                    <span th:text="${estudiante.numeroTelefonico}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Número de Registro:</label>
+                    <span th:text="${estudiante.numeroRegistro}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Puntaje:</label>
+                    <span th:text="${estudiante.puntaje}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Media Nacional:</label>
+                    <span th:text="${estudiante.mediaNacional}"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Aprobado UTS:</label>
+                    <span th:text="${estudiante.aprobadoUTS} ? 'Sí' : 'No'"></span>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Comunicación Escrita:</label>
+                    <span th:text="${estudiante.comunicacionEscrita}"></span>
+                    <small><span th:text="${estudiante.comunicacionEscritaNivel}"></span></small>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Razonamiento Cuantitativo:</label>
+                    <span th:text="${estudiante.razonamientoCuantitativo}"></span>
+                    <small><span th:text="${estudiante.razonamientoCuantitativoNivel}"></span></small>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Lectura Crítica:</label>
+                    <span th:text="${estudiante.lecturaCritica}"></span>
+                    <small><span th:text="${estudiante.lecturaCriticaNivel}"></span></small>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Competencias Ciudadanas:</label>
+                    <span th:text="${estudiante.competenciasCiudadanas}"></span>
+                    <small><span th:text="${estudiante.competenciasCiudadanasNivel}"></span></small>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Inglés:</label>
+                    <span th:text="${estudiante.ingles}"></span>
+                    <small><span th:text="${estudiante.inglesNivel}"></span></small>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Formulación de Proyectos en Ingeniería:</label>
+                    <span th:text="${estudiante.formulacionProyectosIngenieria}"></span>
+                    <small><span th:text="${estudiante.formulacionProyectosIngenieriaNivel}"></span></small>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Pensamiento Científico:</label>
+                    <span th:text="${estudiante.pensamientoCientifico}"></span>
+                    <small><span th:text="${estudiante.pensamientoCientificoNivel}"></span></small>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Diseño de Software:</label>
+                    <span th:text="${estudiante.disenoSoftware}"></span>
+                    <small><span th:text="${estudiante.disenoSoftwareNivel}"></span></small>
+                </div>
+
+                <div>
+                    <label class="font-semibold">Contraseña:</label>
+                    <span th:text="${estudiante.contrasena}"></span>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-6">
+                <a th:href="@{/estudiantes}" class="bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded">Regresar a la Lista</a>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

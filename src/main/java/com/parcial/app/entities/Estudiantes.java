@@ -35,7 +35,7 @@ public class Estudiantes {
     private String pensamientoCientificoNivel;
     private int disenoSoftware;
     private String disenoSoftwareNivel;
-    private String nivelIngles;
+    private String categoriaIngles;
     private String contrasena;
 
     // Constructor por defecto
@@ -70,7 +70,7 @@ public class Estudiantes {
         this.formulacionProyectosIngenieria = formulacionProyectosIngenieria;
         this.pensamientoCientifico = pensamientoCientifico;
         this.disenoSoftware = disenoSoftware;
-        this.nivelIngles = calcularNivelIngles(ingles);
+        this.categoriaIngles = calcularNivelIngles(ingles);
         this.contrasena =contrasena;
         
         // Calcular niveles basados en puntajes
@@ -111,7 +111,7 @@ public class Estudiantes {
     }
     
 
-    // Getters y Setters (incluyen los niveles)
+     // Getters y Setters
     public String getId() {
         return id;
     }
@@ -119,6 +119,14 @@ public class Estudiantes {
     public void setId(String id) {
         this.id = id;
     }
+        public String getCategoriaIngles() {
+        return categoriaIngles;
+    }
+
+    public void setCategoriaIngles(String categoriaIngles) {
+        this.categoriaIngles = categoriaIngles;
+    }
+
     public String getContrasena() {
         return contrasena;
     }
@@ -235,6 +243,10 @@ public class Estudiantes {
         return comunicacionEscritaNivel;
     }
 
+    public void setComunicacionEscritaNivel(String comunicacionEscritaNivel) {
+        this.comunicacionEscritaNivel = comunicacionEscritaNivel;
+    }
+
     public int getRazonamientoCuantitativo() {
         return razonamientoCuantitativo;
     }
@@ -245,6 +257,10 @@ public class Estudiantes {
 
     public String getRazonamientoCuantitativoNivel() {
         return razonamientoCuantitativoNivel;
+    }
+
+    public void setRazonamientoCuantitativoNivel(String razonamientoCuantitativoNivel) {
+        this.razonamientoCuantitativoNivel = razonamientoCuantitativoNivel;
     }
 
     public int getLecturaCritica() {
@@ -259,6 +275,10 @@ public class Estudiantes {
         return lecturaCriticaNivel;
     }
 
+    public void setLecturaCriticaNivel(String lecturaCriticaNivel) {
+        this.lecturaCriticaNivel = lecturaCriticaNivel;
+    }
+
     public int getCompetenciasCiudadanas() {
         return competenciasCiudadanas;
     }
@@ -269,6 +289,10 @@ public class Estudiantes {
 
     public String getCompetenciasCiudadanasNivel() {
         return competenciasCiudadanasNivel;
+    }
+
+    public void setCompetenciasCiudadanasNivel(String competenciasCiudadanasNivel) {
+        this.competenciasCiudadanasNivel = competenciasCiudadanasNivel;
     }
 
     public int getIngles() {
@@ -283,6 +307,10 @@ public class Estudiantes {
         return inglesNivel;
     }
 
+    public void setInglesNivel(String inglesNivel) {
+        this.inglesNivel = inglesNivel;
+    }
+
     public int getFormulacionProyectosIngenieria() {
         return formulacionProyectosIngenieria;
     }
@@ -293,6 +321,10 @@ public class Estudiantes {
 
     public String getFormulacionProyectosIngenieriaNivel() {
         return formulacionProyectosIngenieriaNivel;
+    }
+
+    public void setFormulacionProyectosIngenieriaNivel(String formulacionProyectosIngenieriaNivel) {
+        this.formulacionProyectosIngenieriaNivel = formulacionProyectosIngenieriaNivel;
     }
 
     public int getPensamientoCientifico() {
@@ -307,6 +339,10 @@ public class Estudiantes {
         return pensamientoCientificoNivel;
     }
 
+    public void setPensamientoCientificoNivel(String pensamientoCientificoNivel) {
+        this.pensamientoCientificoNivel = pensamientoCientificoNivel;
+    }
+
     public int getDisenoSoftware() {
         return disenoSoftware;
     }
@@ -319,11 +355,10 @@ public class Estudiantes {
         return disenoSoftwareNivel;
     }
 
-    public String getNivelIngles() {
-        return nivelIngles;
+    public void setDisenoSoftwareNivel(String disenoSoftwareNivel) {
+        this.disenoSoftwareNivel = disenoSoftwareNivel;
     }
 
-    public void setNivelIngles(String nivelIngles) {
-        this.nivelIngles = nivelIngles;
-    }
+
+
 }

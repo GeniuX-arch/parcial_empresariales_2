@@ -47,13 +47,14 @@ public class CoordinadoresWebController {
     }
 
     @PostMapping("/save")
-    public String coordinadoresSaveProcess(@ModelAttribute("coordinador") Coordinadores coordinador) {
-        if (coordinador.getCedula() == null || coordinador.getCedula().equals("")) {
-            coordinador.setCedula(UUID.randomUUID().toString()); // Asigna un UUID si la cédula es nula
-        }
-        coordinadoresRepository.save(coordinador);
-        return "redirect:/coordinadores";
+public String coordinadoresSaveProcess(@ModelAttribute("coordinador") Coordinadores coordinador) {
+    if (coordinador.getCedula() == null || coordinador.getCedula().equals("")) {
+        coordinador.setCedula(UUID.randomUUID().toString()); // Asigna un UUID si la cédula es nula
     }
+    coordinadoresRepository.save(coordinador);
+    return "redirect:/coordinadores";
+}
+
 
     @GetMapping("/delete/{id}")
     public String coordinadorDeleteProcess(@PathVariable("id") String id) {

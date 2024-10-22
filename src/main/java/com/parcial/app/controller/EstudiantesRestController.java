@@ -36,11 +36,49 @@ public class EstudiantesRestController {
     }
 
     // POST a new estudiante
+  // POST a new estudiante
+
+    private String calcularNivel(int puntaje) {
+        if (puntaje >= 191) {
+            return "Nivel 4";
+        } else if (puntaje >= 156) {
+            return "Nivel 3";
+        } else if (puntaje >= 126) {
+            return "Nivel 2";
+        } else {
+            return "Nivel 1"; // Reprobado
+        }
+    }
+    private String calcularNivelIngles(int puntaje) {
+        if (puntaje >= 200) {
+            return "B2";
+        } else if (puntaje >= 170) {
+            return "B1";
+        } else if (puntaje >= 140) {
+            return "A2";
+        } else if (puntaje >= 120) {
+            return "A1";
+        } else {
+            return "A0"; 
+        }
+    }
     @PostMapping
     public ResponseEntity<Estudiantes> createEstudiante(@RequestBody Estudiantes estudiante) {
-        Estudiantes newEstudiante = estudiantesRepositorio.save(estudiante);
-        return new ResponseEntity<>(newEstudiante, HttpStatus.CREATED);
-    }
+            // Calcular niveles antes de guardar
+            estudiante.setComunicacionEscritaNivel(calcularNivel(estudiante.getComunicacionEscrita()));
+            estudiante.setRazonamientoCuantitativoNivel(calcularNivel(estudiante.getRazonamientoCuantitativo()));
+            estudiante.setLecturaCriticaNivel(calcularNivel(estudiante.getLecturaCritica()));
+            estudiante.setCompetenciasCiudadanasNivel(calcularNivel(estudiante.getCompetenciasCiudadanas()));
+            estudiante.setInglesNivel(calcularNivel(estudiante.getIngles()));
+            estudiante.setFormulacionProyectosIngenieriaNivel(calcularNivel(estudiante.getFormulacionProyectosIngenieria()));
+            estudiante.setPensamientoCientificoNivel(calcularNivel(estudiante.getPensamientoCientifico()));
+            estudiante.setDisenoSoftwareNivel(calcularNivel(estudiante.getDisenoSoftware()));
+            estudiante.setCategoriaIngles(calcularNivelIngles(estudiante.getDisenoSoftware()));
+
+            Estudiantes newEstudiante = estudiantesRepositorio.save(estudiante);
+            return new ResponseEntity<>(newEstudiante, HttpStatus.CREATED);
+        }
+
 
     // PUT to update an existing estudiante
     @PutMapping("/{id}")
@@ -97,18 +135,18 @@ public class EstudiantesRestController {
 
     // POST login for estudiante
  // POST login for estudiante
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Estudiantes credentials) {
-        Optional<Estudiantes> estudiante = estudiantesRepositorio.findByNumeroDocumento(credentials.getNumeroDocumento()); // Cambiado a numeroDocumento
+    @PostMapping("/login/estudiante")
+public ResponseEntity<?> loginEstudiante(@RequestBody Estudiantes credentials) {
+    Optional<Estudiantes> estudiante = estudiantesRepositorio.findByNumeroDocumento(credentials.getNumeroDocumento());
 
-        if (estudiante.isPresent() && 
-            estudiante.get().getContrasena().equals(credentials.getContrasena())) {
-            // Login exitoso
-            Map<String, Object> response = new HashMap<>();
-            response.put("message", "Login exitoso");
-            response.put("estudiante", estudiante.get());
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        }
+    if (estudiante.isPresent() && 
+        estudiante.get().getContrasena().equals(credentials.getContrasena())) {
+        // Login exitoso
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Login exitoso");
+        response.put("estudiante", estudiante.get());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
         return new ResponseEntity<>("Credenciales inválidas", HttpStatus.UNAUTHORIZED);
     }

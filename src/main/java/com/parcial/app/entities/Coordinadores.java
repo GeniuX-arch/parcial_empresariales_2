@@ -24,6 +24,15 @@ public class Coordinadores {
     }
 
     // Getter para cedula
+    public String getId() {
+        return id;
+    }
+
+// Setter para id
+    public void setId(String id) {
+        this.id = id;
+    }
+    // Getter para cedula
     public String getCedula() {
         return cedula;
     }

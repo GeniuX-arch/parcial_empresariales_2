@@ -31,7 +31,7 @@ public class EstudiantesWebController {
     public String estudiantesListTemplate(Model model) {
         model.addAttribute("listaEstudiantes", estudiantesRepositorio.findAll());
         return "list-estudiantes";
-    }
+}
     @GetMapping("/{id}")
     public String estudianteDetailTemplate(@PathVariable("id") String id, Model model) {
     Estudiantes estudiante = estudiantesRepositorio.findById(id)
@@ -74,8 +74,8 @@ public class EstudiantesWebController {
     model.addAttribute("estudiante", new Estudiantes());
     return "login-estudiantes"; // Asegúrate de tener la plantilla correspondiente
     }
-@PostMapping("/login")
-public String processLogin(@ModelAttribute("estudiante") Estudiantes estudiante, 
+    @PostMapping("/login")
+    public String processLogin(@ModelAttribute("estudiante") Estudiantes estudiante, 
                            HttpSession session, 
                            RedirectAttributes redirectAttributes) {
     
